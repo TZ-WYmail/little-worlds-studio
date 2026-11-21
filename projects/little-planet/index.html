@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1b182d">
+  <meta name="description" content="An interactive storybook planet. Watch a little traveler tend his rose and follow the light around B-612.">
+  <link rel="icon" href="data:,">
+  <title>The Little Planet · 小王子的星球</title>
+</head>
+<body>
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="experience">
+    <header class="masthead" data-chrome>
+      <a class="studio" href="./" aria-label="Little Worlds Studio home">
+        <span class="studio-mark" aria-hidden="true"></span><span>Little Worlds Studio</span>
+      </a>
+      <div class="utilities">
+        <button id="music" type="button" aria-pressed="false"><span class="music-icon" aria-hidden="true"></span><span>Music</span></button>
+        <details id="settings" class="settings">
+          <summary>View &amp; capture</summary>
+          <div class="settings-panel glass">
+            <label>Quality<select id="quality"><option value="auto">Auto</option><option value="high">High</option><option value="low">Economy</option></select></label>
+            <label class="check"><input id="reduced" type="checkbox">Reduce motion</label>
+            <div class="settings-actions">
+              <button id="png" type="button">Export PNG</button>
+              <button id="cover" type="button">3:4 cover</button>
+              <button id="clean-view" type="button">Hide interface</button>
+              <button id="showcase" type="button">Play showcase</button>
+            </div>
+            <a href="./licenses/soundtrack.html" target="_blank" rel="noopener">Music, quotes &amp; credits</a>
+          </div>
+        </details>
+      </div>
+    </header>
+    <main class="stage">
+      <div id="viewport" class="viewport" aria-label="Interactive 3D view of B-612"></div>
+      <div class="introduction" data-chrome>
+        <p class="location"><span></span> ASTEROID B-612</p>
+        <h1>The Little<br><em>Planet</em></h1>
+        <p class="subtitle">Somewhere among the stars <span lang="zh-CN">小王子的星球</span></p>
+        <figure class="epigraph">
+          <blockquote cite="https://www.antoinedesaintexupery.org/ouvrage/le-petit-prince-1943/">“What matters most is invisible to the eyes.”</blockquote>
+          <figcaption>Antoine de Saint-Exupéry · <span class="book-reference"><cite>The Little Prince</cite>, XXI</span></figcaption>
+        </figure>
+        <div class="hero-actions">
+          <button id="sunset" class="text-action" type="button">Watch the sunset<span class="arrow" aria-hidden="true"></span></button>
+          <button id="explore" class="text-action" type="button">Explore</button>
+        </div>
+        <button id="time-travel" class="text-action turn-page" type="button">Travel through time</button>
+      </div>
+      <aside id="story-card" class="story-card" aria-labelledby="story-title" hidden data-chrome>
+        <button type="button" id="close-story" class="close" aria-label="Close story"></button>
+        <h2 id="story-title"></h2>
+        <p id="story-description"></p>
+        <figure class="epigraph rose-epigraph" id="rose-quote" hidden>
+          <blockquote cite="https://www.antoinedesaintexupery.org/ouvrage/le-petit-prince-1943/">“The time you gave your rose is what makes it matter.”</blockquote>
+          <figcaption><cite>The Little Prince</cite>, XXI</figcaption>
+        </figure>
+        <div class="story-actions">
+          <button type="button" class="text-action" id="story-action" hidden></button>
+          <button type="button" class="text-action" id="protect-rose" hidden>Cover the rose</button>
+        </div>
+        <progress id="story-progress" max="1" value="0" aria-label="Story progress" hidden></progress>
+      </aside>
+      <aside id="monologue" class="monologue" aria-label="Object monologue" hidden data-chrome>
+        <button type="button" id="toggle-monologue" class="text-action" aria-expanded="false" aria-controls="monologue-text">
+          In my own words<span class="fold-mark" aria-hidden="true"></span>
+        </button>
+        <p id="monologue-text" hidden></p>
+      </aside>
+      <p class="gesture scene-notes" data-chrome>Drag to orbit · Pinch or scroll to zoom</p>
+      <p id="notice" class="notice glass" role="status" hidden></p>
+    </main>
+    <section id="clock-panel" class="clock-panel" aria-label="Explore and set planet time" data-chrome>
+      <nav id="object-shortcuts" class="discover" aria-label="Object shortcuts"></nav>
+      <output id="seed-count" class="sr-only" role="status">0 of 3 sprouts cleared</output>
+      <div class="clock-readout">
+        <button type="button" id="play" class="play" aria-label="Play day cycle" aria-pressed="false"><span aria-hidden="true"></span></button>
+        <div><output id="time">18:30</output><p id="chapter">Golden hour</p></div>
+      </div>
+      <div class="timeline">
+        <label class="sr-only" for="scrubber">Time of day</label>
+        <input id="scrubber" type="range" min="0" max="1439" value="1110" aria-valuetext="18:30">
+        <div class="presets" role="group" aria-label="Time presets">
+          <button type="button" data-hour="6" aria-pressed="false"><span>06:00</span>Dawn</button>
+          <button type="button" data-hour="12" aria-pressed="false"><span>12:00</span>Daylight</button>
+          <button type="button" data-hour="18.5" aria-pressed="true"><span>18:30</span>Dusk</button>
+          <button type="button" data-hour="22" aria-pressed="false"><span>22:00</span>Night</button>
+        </div>
+      </div>
+      <div class="clock-side">
+        <label class="speed">Speed<select id="speed" aria-label="Day cycle speed"><option value=".5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option></select></label>
+        <p class="daily-note" id="daily-note" hidden></p>
+      </div>
+    </section>
+  </div>
+  <audio id="soundtrack" preload="none" loop></audio>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

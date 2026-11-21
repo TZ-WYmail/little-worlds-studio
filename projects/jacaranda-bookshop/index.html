@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="环绕观察蓝花楹下的小书店，切换时刻和天气，观察橱窗透光。">
+  <link rel="icon" href="data:,">
+  <title>蓝花楹下的小书店 · Little Worlds Studio</title>
+</head>
+<body>
+  <main class="postcard">
+    <header class="masthead">
+      <h1>蓝花楹下的小书店</h1>
+      <p class="studio" lang="en">Little Worlds Studio</p>
+    </header>
+    <div class="exhibit">
+      <figure class="postcard-front">
+        <div class="scene-frame" id="scene-frame" data-time="evening" data-weather="clear" data-motion="on">
+          <div id="scene"></div>
+          <div class="lettering">
+            <div class="float-title" lang="en" aria-hidden="true">
+              <span>Jacaranda</span><span>Bookshop</span>
+            </div>
+            <blockquote class="scene-quote" lang="en" cite="https://www.gutenberg.org/cache/epub/12241/pg12241.html">
+              <p><span>“There is no frigate like a book</span> <span>To take us lands away”</span></p>
+              <footer>Emily Dickinson</footer>
+            </blockquote>
+          </div>
+        </div>
+        <figcaption>
+          <p id="view-instructions" hidden>
+            <span>拖动环绕 · 滚轮或双指缩放 · 方向键与加减键</span>
+            <span lang="en">Drag to orbit. Scroll or pinch to zoom.</span>
+          </p>
+          <p id="scene-status" role="status">正在准备场景…</p>
+        </figcaption>
+      </figure>
+      <aside class="controls" id="scene-controls" aria-label="场景控制" hidden>
+        <div class="postcard-note">
+          <p lang="en">A Little Place<br>in Spring</p>
+          <div class="stamp" aria-hidden="true">
+            <img src="./src/styles/twilight-poster.webp" alt="" width="112" height="92">
+          </div>
+        </div>
+        <section class="panel-section">
+          <h2 id="view-label"><span lang="en">View</span><span>镜头</span></h2>
+          <div class="choices" role="group" aria-labelledby="view-label" lang="en">
+            <button type="button" data-view="overview" aria-label="Overview 全景" aria-pressed="true">Overview</button>
+            <button type="button" data-view="shop" aria-label="Window 橱窗" aria-pressed="false">Window</button>
+            <button type="button" data-view="crown" aria-label="Blossoms 花冠" aria-pressed="false">Blossoms</button>
+          </div>
+        </section>
+        <section class="panel-section">
+          <h2 id="time-label"><span lang="en">Time</span><span>时刻</span></h2>
+          <div class="choices" role="group" aria-labelledby="time-label" lang="en">
+            <button type="button" data-time="day" aria-label="Daylight 白昼" aria-pressed="false">Daylight</button>
+            <button type="button" data-time="evening" aria-label="Dusk 傍晚" aria-pressed="true">Dusk</button>
+            <button type="button" data-time="night" aria-label="Night 深夜" aria-pressed="false">Night</button>
+          </div>
+        </section>
+        <section class="panel-section">
+          <h2 id="weather-label"><span lang="en">Weather</span><span>天气</span></h2>
+          <div class="choices" role="group" aria-labelledby="weather-label" lang="en">
+            <button type="button" data-weather="clear" aria-label="Clear skies 晴空" aria-pressed="true">Clear skies</button>
+            <button type="button" data-weather="rain" aria-label="Spring rain 春雨" aria-pressed="false">Spring rain</button>
+          </div>
+        </section>
+        <div class="panel-section">
+          <div class="range-label">
+            <label for="wind"><span lang="en">Breeze</span><span>风力</span></label>
+            <output for="wind" id="wind-value">42%</output>
+          </div>
+          <input type="range" min="0" max="100" value="42" id="wind">
+          <div class="motion-options">
+            <label lang="en"><input type="checkbox" id="petals" aria-label="Falling petals 飘落花瓣" checked>Falling petals</label>
+            <button type="button" id="motion-toggle" lang="en" aria-label="Pause motion 暂停动效">Pause motion</button>
+          </div>
+        </div>
+        <div class="soundtrack">
+          <button type="button" id="music-toggle" aria-label="Music 背景音乐" aria-pressed="false">
+            <span class="music-note" aria-hidden="true">♪</span>
+            <span lang="en">Music</span>
+            <span class="music-state" lang="en" aria-hidden="true">Off</span>
+          </button>
+          <a class="music-credits" href="./licenses/Soundtrack.html" lang="en" target="_blank" rel="noopener">Music credits</a>
+          <p class="music-status" id="music-status" role="status"></p>
+          <audio id="soundtrack" preload="none"></audio>
+        </div>
+        <div class="postcard-signoff">
+          <img src="./src/styles/jacaranda-sprig.webp" class="postcard-sprig" alt="" width="480" height="320">
+          <button type="button" class="signoff-link" data-view="rear" aria-pressed="false">
+            <span lang="en">Back lane</span>
+            <span class="signoff-arrow" aria-hidden="true">→</span>
+            <small>后巷门灯</small>
+          </button>
+        </div>
+      </aside>
+    </div>
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
